@@ -2895,6 +2895,8 @@ declare namespace ts {
             getAllProjectErrors(): readonly Diagnostic[];
             setProjectErrors(projectErrors: Diagnostic[]): void;
             close(): void;
+            markAsDirty(): void;
+            isOrphan(): boolean;
             getEffectiveTypeRoots(): string[];
         }
         /**
@@ -3326,7 +3328,6 @@ declare namespace ts {
             hasDeferredExtension(): boolean;
             private enableRequestedPluginsAsync;
             private enableRequestedPluginsWorker;
-            private enableRequestedPluginsForProjectAsync;
             configurePlugin(args: protocol.ConfigurePluginRequestArguments): void;
         }
         function formatMessage<T extends protocol.Message>(msg: T, logger: Logger, byteLength: (s: string, encoding: BufferEncoding) => number, newLine: string): string;
